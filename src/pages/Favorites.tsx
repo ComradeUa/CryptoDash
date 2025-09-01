@@ -25,8 +25,8 @@ const Favorites: FC = () => {
       <div className='flex justify-center'>
         <h1 className='text-5xl font-ubuntu flex items-center gap-2'>Favorites Coins here:</h1>
       </div>
-      <div className="mt-5 overflow-x-auto max-w-6xl mx-auto">
-      <Table className="table-fixed w-full border rounded-xl shadow-sm">
+  <div className="mt-5 overflow-x-auto max-w-6xl mx-auto px-2">
+  <Table className="min-w-[600px] w-full border rounded-xl shadow-sm text-xs sm:text-sm md:text-base">
         <TableHeader>
           <TableRow>
             <TableHead className="w-64">Name</TableHead>

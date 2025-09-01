@@ -31,17 +31,22 @@ const SearchBar: FC = () => {
   };
   return (
     <>
-    <div className='mt-8 flex justify-center gap-2'>
-      <div className="w-full max-w-sm ">
+    <div className='mt-8 flex flex-col sm:flex-row justify-center gap-4 sm:gap-2 items-center w-full px-2'>
+      <div className="w-full max-w-sm flex-1">
         <Input
           type="text"
           value={text}
           placeholder="Write name of cryptocurrency..."
-          onChange={handleOnChange}></Input>
+          onChange={handleOnChange}
+        />
       </div>
-      <Link to="/favorites"><Button variant='outline'>Favorites Coins</Button></Link>
+      <Link to="/favorites" className="w-full sm:w-auto">
+        <Button variant='outline' className="w-full sm:w-auto">Favorites Coins</Button>
+      </Link>
     </div>
-     <CryptoBarList coins={filtredCoins}/>
+    <div className="mt-4 px-2">
+      <CryptoBarList coins={filtredCoins}/>
+    </div>
      </>
   );
 };
