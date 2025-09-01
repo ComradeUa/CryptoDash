@@ -18,14 +18,14 @@ const CryptoBarList: FC<CryptoBarProps> = ({ coins }) => {
   const {favorites, toggleFavorite} = useFavorites();
   const memoToggleFavorite = useCallback(toggleFavorite, [toggleFavorite]);
   return (
-    <div className="mt-5 overflow-x-auto max-w-6xl mx-auto px-2">
-      <Table className="min-w-[600px] w-full border rounded-xl shadow-sm text-xs sm:text-sm md:text-base">
+    <div className="mt-5 max-w-6xl mx-auto px-2">
+      <Table className="w-full border rounded-xl shadow-sm text-xs sm:text-sm md:text-base">
         <TableHeader>
           <TableRow>
-            <TableHead className="w-64">Name</TableHead>
-            <TableHead className="w-32 text-right">Price</TableHead>
-            <TableHead className="w-28 text-right">24h %</TableHead>
-            <TableHead className="w-40 text-right">Market Cap</TableHead>
+            <TableHead className="w-auto min-w-0 sm:w-64">Name</TableHead>
+            <TableHead className="text-right w-auto min-w-0 sm:w-32">Price</TableHead>
+            <TableHead className="text-right w-auto min-w-0 sm:w-28">24h %</TableHead>
+            <TableHead className="text-right w-auto min-w-0 sm:w-40">Market Cap</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -37,11 +37,11 @@ const CryptoBarList: FC<CryptoBarProps> = ({ coins }) => {
             : 
               coins?.map((crypto) => (
                 <CryptoRow
-                    key={crypto.id}
-                    crypto={crypto}
-                    isFavorite={favorites?.includes(crypto.id)}
-                    toggleFavorite={memoToggleFavorite}
-                    />
+                  key={crypto.id}
+                  crypto={crypto}
+                  isFavorite={favorites?.includes(crypto.id)}
+                  toggleFavorite={memoToggleFavorite}
+                />
               ))
             }
         </TableBody>

@@ -7,12 +7,12 @@ import { memo } from 'react';
 const CryptoRow: FC<CryptoRowProps> = ({ crypto, isFavorite, toggleFavorite }) => {
   return (
     <TableRow>
-      <TableCell className="font-medium">
+      <TableCell className="font-medium truncate max-w-[120px]">
         <span className="flex items-center gap-2">
           <Button onClick={() => toggleFavorite(crypto.id)} variant="outline" className="px-2 py-1">
             {isFavorite ? '⭐' : '☆'}
           </Button>
-          <span className="truncate max-w-[120px]">
+          <span className="truncate max-w-[80px]">
             <Link to={`/coin/:${crypto.id}`} title={crypto.name}>
               {crypto.name}
             </Link>
@@ -21,16 +21,16 @@ const CryptoRow: FC<CryptoRowProps> = ({ crypto, isFavorite, toggleFavorite }) =
         </span>
       </TableCell>
 
-      <TableCell className="text-right tabular-nums">{crypto.current_price}$</TableCell>
+      <TableCell className="text-right tabular-nums truncate max-w-[70px]">{crypto.current_price}$</TableCell>
 
       <TableCell
-        className={`text-right tabular-nums ${
+        className={`text-right tabular-nums truncate max-w-[60px] ${
           crypto.price_change_percentage_24h > 0 ? 'text-green-600' : 'text-red-600'
         }`}>
         {crypto.price_change_percentage_24h.toFixed(2)}%
       </TableCell>
 
-      <TableCell className="text-right tabular-nums">
+      <TableCell className="text-right tabular-nums truncate max-w-[90px]">
         {crypto.market_cap.toLocaleString()}
       </TableCell>
     </TableRow>
