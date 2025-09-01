@@ -1,5 +1,5 @@
 import { useFavorites } from '@/hooks/useFavorites';
-import { type FC } from 'react';
+import { useCallback, useMemo, type FC } from 'react';
 import {
   Table,
   TableBody,
@@ -12,9 +12,14 @@ import CryptoRowSkeleton from '@/components/CryptoRowSkeleton';
 import CryptoRow from '@/components/CryptoRow';
 const Favorites: FC = () => {
   const { favorites, toggleFavorite } = useFavorites();
+  const memoToggleFavorite = useCallback(toggleFavorite, [toggleFavorite]);
   const { data, loading } = useFetch();
 
-  const favoritesCrypto = data?.filter((crypto) => favorites.includes(crypto.id));
+  const favoritesCrypto = useMemo(() => {
+    if (!data) return [];
+    return data.filter((crypto) => favorites.includes(crypto.id));
+  }, [data, favorites]);
+
   return (
     <div className='mt-5'>
       <div className='flex justify-center'>
@@ -37,8 +42,8 @@ const Favorites: FC = () => {
                <CryptoRowSkeleton key={index}/>
               ))
             : 
-              favoritesCrypto?.map((crypto, index) => (
-                <CryptoRow crypto={crypto} key={index} isFavorite={favorites.includes(crypto.id)} toggleFavorite={toggleFavorite}/>
+              favoritesCrypto?.map((crypto) => (
+                <CryptoRow crypto={crypto} key={crypto.id} isFavorite={favorites.includes(crypto.id)} toggleFavorite={memoToggleFavorite}/>
               ))}
         </TableBody>
       </Table>

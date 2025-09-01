@@ -9,12 +9,14 @@ import {
 } from '@/components/ui/table';
 import type { CryptoBarProps } from '@/types/coin';
 import { useFavorites } from '../hooks/useFavorites';
+import { useCallback } from 'react';
 import CryptoRowSkeleton from './CryptoRowSkeleton';
 import CryptoRow from './CryptoRow';
 
 const CryptoBarList: FC<CryptoBarProps> = ({ coins }) => {
   const { loading } = useFetch();
   const {favorites, toggleFavorite} = useFavorites();
+  const memoToggleFavorite = useCallback(toggleFavorite, [toggleFavorite]);
   return (
     <div className="mt-5 overflow-x-auto max-w-6xl mx-auto">
       <Table className="table-fixed w-full border rounded-xl shadow-sm">
@@ -38,9 +40,10 @@ const CryptoBarList: FC<CryptoBarProps> = ({ coins }) => {
                     key={crypto.id}
                     crypto={crypto}
                     isFavorite={favorites?.includes(crypto.id)}
-                    toggleFavorite={toggleFavorite}
+                    toggleFavorite={memoToggleFavorite}
                     />
-              ))}
+              ))
+            }
         </TableBody>
       </Table>
     </div>
