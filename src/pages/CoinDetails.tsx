@@ -1,10 +1,10 @@
 import  { type FC } from 'react';
 import { useParams } from 'react-router';
-import BackLink from '@/components/ui/BackLink';
-import CoinHeader from '@/components/ui/CoinHeader';
-import CoinPrice from '@/components/ui/CoinPrice';
-import PriceCharts from '@/components/ui/PriceCharts';
-import CoinDescription from '@/components/ui/CoinDescription';
+import BackLink from '@/components/BackLink';
+import CoinHeader from '@/components/CoinHeader';
+import CoinPrice from '@/components/CoinPrice';
+import PriceCharts from '@/components/PriceCharts';
+import CoinDescription from '@/components/CoinDescription';
 import { useCoinDetails } from '@/hooks/useCoinDetails';
 import CoinDetailsLoading from '@/pages/CoinDetailsLoading';
 import CoinDetailsError from '@/pages/CoinDetailsErr';

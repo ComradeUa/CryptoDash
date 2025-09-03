@@ -1,4 +1,4 @@
-import BackLink from '../components/ui/BackLink'
+import BackLink from '../components/BackLink'
 
 type Props = {
   message?: string;
