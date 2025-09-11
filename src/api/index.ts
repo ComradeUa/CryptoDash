@@ -13,7 +13,7 @@ export  const fetchCrypto = async(): Promise<Coin[]> => {
                     order: "market_cap_desc"
                 },
                 headers:{
-                    'x-cg-demo-api-key': "CG-KDGD9pU9PSrjZnvHT38GtKFt"
+                    'x-cg-demo-api-key': process.env.TOKEN
                 }
             }
         );
@@ -29,7 +29,7 @@ export const fetchCoinDetails = async (id: string): Promise<CoinDetailsResponse>
       `https://api.coingecko.com/api/v3/coins/${id}`, 
       {
         headers: {
-          'x-cg-demo-api-key': "CG-KDGD9pU9PSrjZnvHT38GtKFt"
+          'x-cg-demo-api-key':  process.env.TOKEN
         }
       }
     );
